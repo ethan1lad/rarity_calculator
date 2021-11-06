@@ -5,6 +5,7 @@ import json
 from data_store import data_store
 from search_key import search
 client = discord.Client()
+import csv
 
 @client.event
 async def on_ready():
@@ -30,7 +31,19 @@ async def on_message(message):
                 float(store['head'][search(None,data,"head")]) +
                 float(store['nose'][search(None,data,"nose")]) +
                 float(store['expression'][search(None,data,"expression")]))
-        await message.channel.send(score)
+        await message.channel.send("Rarity Score is" + str(score))
+
+
+    if message.content.startswith('!rank'): 
+      id = message.content[6:]   
+      with open('ranks2.csv', "r") as FILE:
+          reader = csv.reader(FILE, delimiter=',')
+          for row in reader:
+              data_id = row[0][:5]
+              if id in data_id:
+                rank = row[-1]
+                await message.channel.send(data_id + " has rank " + str(rank) + "/3000")
+
 
 # PUT TOKEN HERE
 client.run(os.getenv('TOKEN'))
