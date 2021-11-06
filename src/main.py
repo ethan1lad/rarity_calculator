@@ -33,7 +33,6 @@ async def on_message(message):
                 float(store['expression'][search(None,data,"expression")]))
         await message.channel.send("Rarity Score is" + str(score))
 
-
     if message.content.startswith('!rank'): 
       id = message.content[6:]   
       with open('ranks2.csv', "r") as FILE:
