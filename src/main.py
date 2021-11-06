@@ -33,8 +33,15 @@ async def on_message(message):
                 float(store['expression'][search(None,data,"expression")]))
         await message.channel.send("Rarity Score is" + str(score))
 
-    if message.content.startswith('!rank'): 
-      id = message.content[6:]   
+    if message.content.startswith('!rank #'): 
+      id = message.content[6:]  
+      no_hash = id[1:].lstrip('0') 
+      if int(no_hash) < 10:
+        id = '#000' + no_hash
+      elif int(no_hash) < 100:
+        id = '#00' + no_hash
+      elif int(no_hash) < 1000:
+        id = '#0' + no_hash
       with open('../data/ranks2.csv', "r") as FILE:
           reader = csv.reader(FILE, delimiter=',')
           for row in reader:
