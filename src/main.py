@@ -35,7 +35,7 @@ async def on_message(message):
 
     if message.content.startswith('!rank'): 
       id = message.content[6:]   
-      with open('ranks2.csv', "r") as FILE:
+      with open('../data/ranks2.csv', "r") as FILE:
           reader = csv.reader(FILE, delimiter=',')
           for row in reader:
               data_id = row[0][:5]
