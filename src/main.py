@@ -31,7 +31,7 @@ async def on_message(message):
                 float(store['head'][search(None,data,"head")]) +
                 float(store['nose'][search(None,data,"nose")]) +
                 float(store['expression'][search(None,data,"expression")]))
-        await message.channel.send("Rarity Score is" + str(score))
+        await message.channel.send("Rarity Score is " + str(score))
 
     if message.content.startswith('!rank #'): 
       id = message.content[6:]  
