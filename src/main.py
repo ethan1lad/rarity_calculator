@@ -93,7 +93,7 @@ async def on_message(message):
                     data = json.loads(resp1.text)['additionalRegisters']['R9']['renderedValue']
                     image_url = bytes.fromhex(data).decode("ASCII")
                     embed = discord.Embed(title=f"Gnomekin ID: {gnome_id}",
-                                          description=f" Rank: {row[-1]}/3000\n Rarity Score: {round(float(row[-3]),3)} \n Token Id: {token_id}\n ",
+                                          description=f" Rank: {row[-1]}/3000\nRarity Score: {round(float(row[-3]),3)} \nToken Id: {token_id}\n ",
                                           color=0xFF5733)
                     embed.set_image(url=image_url)
             await message.channel.send(embed=embed)
